@@ -48,7 +48,7 @@ function closeAllSidebarSections() {
     assetsSection.classList.remove('active');
     loginCredentialSection.classList.remove('active');
     reportsSection.classList.remove('active');
-    leavePlanDropdown.style.display = 'none';
+    // leavePlanDropdown.style.display = 'none';
     leaveCalendar.style.display = 'none';
     leaveForm.style.display = 'none';
     // Add any other sidebar sections here
@@ -65,8 +65,11 @@ dashboardBtn.addEventListener('click', () => {
 });
 
 leavePlanBtn.addEventListener('click', () => {
-    closeAllSidebarSections();
-    leavePlanDropdown.style.display = 'block';
+    if (leavePlanDropdown.style.display === 'none' || leavePlanDropdown.style.display === '') {
+        leavePlanDropdown.style.display = 'block';
+    } else {
+        leavePlanDropdown.style.display = 'none';
+    }
 });
 
 dailyTasksBtn.addEventListener('click', () => {
@@ -108,12 +111,6 @@ loginCredentialBtn.addEventListener('click', () => {
     closeAllSidebarSections();
     loginCredentialSection.classList.add('active');
     renderLoginCredentialTable();
-});
-
-applyLeaveBtn.addEventListener('click', () => {
-    closeAllSidebarSections();
-    leaveCalendar.style.display = 'block';
-    renderCalendar(currentDate);
 });
 
 prevMonthBtn.addEventListener('click', () => {
@@ -180,16 +177,6 @@ menuBtn.addEventListener('click', (event) => {
     mainContent.classList.toggle('active');
     event.stopPropagation();
 });
-
-// document.addEventListener('click', (event) => {
-//     const isClickInsideSidebar = sidebar.contains(event.target);
-//     const isClickOnMenuButton = menuBtn.contains(event.target);
-
-//     if (!isClickInsideSidebar && !isClickOnMenuButton) {
-//         sidebar.classList.remove('active');
-//         mainContent.classList.remove('active');
-//     }
-// });
 
 const setCurrentDateTime = () => {
     const now = new Date();
