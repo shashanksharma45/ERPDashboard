@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="sidebar" id="sidebar">
+        <h2>ERP</h2>
+        <form>
+            <button type="button" id="dashboard-btn">Dashboard</button>
+            <button type="button" id="profile-btn">Profile</button>
+            <button type="button" id="daily-tasks-btn">Daily Tasks</button>
+            <button type="button" id="leave-plan-btn">Leave Plan</button>
+            <div id="leave-plan-dropdown" class="dropdown-content">
+                <button type="button" id="apply-leave-btn">Apply Leave</button>
+                <button type="button" id="leave-balence-btn">Leave Balence</button>
+                <button type="button" id="leave-status-btn">Leave Status</button>
+            </div>
+            <button type="button" id="e-mail-btn">E - Mail</button>
+            <button type="button" id="phone-number-btn">Phone Number</button>
+            <button type="button" id="credit-card-btn">Cridit Card</button>
+            <button type="button" id="assets-btn">Assets</button>
+            <button type="button" id="login-credential-btn">Login Credential</button>
+            <button type="button" id="report-btn">Report</button>
+
+        </form>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <div class="header-left">
+                <button class="menu-btn" id="menu-btn">&#9776;</button>
+                <h2>Welcome!</h2>
+            </div>
+            <div class="header-right">
+                <span id="current-date"></span>
+                <span id="current-time"></span>
+                <button class="logout-btn" id="logout-btn">Logout</button>
+            </div>
+        </header>
+        <div class="dashboard">
+            <div class="profile" id="profile-section">
+                <h3>Profile</h3>
+                <p><strong>Employee ID:</strong> [ID]</p>
+                <p><strong>Name:</strong> [Name]</p>
+                <p><strong>Department:</strong> [Department]</p>
+                <p><strong>Designation:</strong> [Designation]</p>
+                <button class="mark-attendance">Mark Attendance</button>
+            </div>
+            <div class="notifications" id="notifications-section">
+                <h3>Notifications</h3>
+                <ul>
+                    <li><a href="#">Notification 1</a><span>Date and Time</span></li>
+                    <li><a href="#">Notification 2</a><span>Date and Time</span></li>
+                    <li><a href="#">Notification 3</a><span>Date and Time</span></li>
+                    <li><a href="#">Notification 4</a><span>Date and Time</span></li>
+                </ul>
+                <button class="view-all">View All</button>
+                <button class="company-policy">Company Policy</button>
+            </div>
+            <div class="daily-tasks" id="daily-tasks-section">
+                <label for="project"><b>Project:</b></label>
+                <select id="project" name="project">
+                    <option value="select">Select</option>
+                    <option value="anti_Money_Laundering">Anti Money Laundering</option>
+                    <option value="media_Monitoring">Media Monitoring</option>
+                    <option value="influencer_Monitoring">Influencer Monitoring</option>
+                </select>
+                <label for="sub-project" class="sub-project-label"><b>Sub-Project:</b></label>
+                <select id="sub-project" name="sub_project">
+                    <option value="select">Select</option>
+                </select>
+
+                <!-- Table placeholders for each combination -->
+                <div id="table-container" style="padding: 10px; ;">
+                    <table class="data-table" id="anti_Money_Laundering-insertion" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th class="header">Daily Cases</th>
+                                <th class="header">Hourly Count</th>
+                                <th class="header">Multiple Cases</th>
+                                <th class="header">Not Found cases</th>
+                                <th class="header">Messaging channel platform</th>
+                                <th class="header">Net Banking/Cardit card</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="number" class="short-input"></td>
+                                <td><input type="number" class="short-input"></td>
+                                <td><input type="number" class="short-input"></td>
+                                <td><input type="number" class="short-input"></td>
+                                <td><input type="number" class="short-input"></td>
+                                <td><input type="number" class="short-input"></td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th class="header">Error</th>
+                                <th class="header">Alloted website</th>
+                                <th class="header">Visited website</th>
+                                <th class="header">Total</th>
+                                <th class="header">App</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="number" class="short-input"></td>
+                                <td><input type="number" class="short-input"></td>
+                                <td><input type="number" class="short-input"></td>
+                                <td><input type="number" class="short-input"></td>
+                                <td><input type="number" class="short-input"></td>
+                            </tr>
+                        </tbody>
+                        <!-- Add more rows as needed -->
+                    </table>
+                    <table class="data-table" id="anti_Money_Laundering-quality_check" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th class="header">GUI QC</th>
+                                <th class="header">by Exporting</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="number" class="short-input"></td>
+                                <td><input type="number" class="short-input"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="data-table" id="anti_Money_Laundering-website_monitoring" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th class="header">Website Searching</th>
+                                <th class="header">Remarks Checking</th>
+                                <th class="header">Credential Making</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="number" class="short-input"></td>
+                                <td><input type="number" class="short-input"></td>
+                                <td><input type="number" class="short-input"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="data-table" id="anti_Money_Laundering-social_media_scrawling" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th class="header">UPI Fraud</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="number" class="short-input"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="data-table" id="anti_Money_Laundering-training_support" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th class="header">Training and Support</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="text" class="short-input"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="data-table" id="media_Monitoring-youtube" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th class="header">Youtube Vedio</th>
+                                <th class="header">YT ITC Manual Review</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="number" class="short-input"></td>
+                                <td><input type="number" class="short-input"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="data-table" id="media_Monitoring-ott" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th class="header">OTT</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="number" class="short-input"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="data-table" id="media_Monitoring-facebook" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th class="header">Facebook Vedio</th>
+                                <th class="header">Facebook Reels</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="number" class="short-input"></td>
+                                <td><input type="number" class="short-input"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="data-table" id="media_Monitoring-sharechat" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th class="header">Sharechat Vedio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="number" class="short-input"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="data-table" id="media_Monitoring-web_review" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th class="header">Web Review</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="number" class="short-input"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="data-table" id="media_Monitoring-training_support" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th class="header">Training and Support</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="text" class="short-input"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="data-table" id="influencer_Monitoring-influencer_Monitoring" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th class="header">influencer Monitoring</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="number" class="short-input"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="data-table" id="influencer_Monitoring-training_support" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th class="header">Training/support</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="text" class="short-input"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <button class="submit-button">Submit</button>
+                </div>
+            </div>
+            <div id="leave-calendar" style="display: none;">
+                <div id="calendar-controls">
+                    <button id="prev-month">Previous</button>
+                    <span id="current-month-year"></span>
+                    <button id="next-month">Next</button>
+                </div>
+                <div id="weekdays"></div>
+                <div id="calendar "></div>
+                <div id="calendar"></div>
+            </div>
+
+            <!-- Add this for the leave application form -->
+            <div id="leave-form" class="modal">
+                <div class="modal-content">
+                    <h3>Apply for Leave</h3>
+                    <form id="leave-application-form">
+                        <label for="leave-start">Start Date:</label>
+                        <input type="date" id="leave-start" required>
+                        <label for="leave-end">End Date:</label>
+                        <input type="date" id="leave-end" required>
+                        <label for="leave-type">Leave Type:</label>
+                        <select id="leave-type" required>
+                            <option value="">Select leave type</option>
+                            <option value="annual">Annual Leave</option>
+                            <option value="sick">Medical Leave</option>
+                            <option value="personal">Personal Leave</option>
+                            <option value="sick">Half Day Leave</option>
+                            <option value="sick">Hourly Leave</option>
+                        </select>
+                        <label for="leave-reason">Reason:</label>
+                        <textarea id="leave-reason" required></textarea>
+                        <button type="submit">Submit Leave Application</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <div id="emails-section" class="dashboard-section">
+            <h2>Emails</h2>
+            <table id="emails-table" class="data-table">
+                <thead>
+                    <tr>
+                        <th>E-mail</th>
+                        <th>Password</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Phone number</th>
+                        <th>Recovery Email</th>
+                        <th>Recovery Phone No.</th>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>shawtrim@outlook.com</td>
+                        <td>prince123@</td>
+                        <td>Shaw</td>
+                        <td>Trim</td>
+                        <td>NO</td>
+                        <td>NO</td>
+                        <td>NO</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>jw0485612@gmail.com</td>
+                        <td>Johnwick@06</td>
+                        <td>John</td>
+                        <td>Wick</td>
+                        <td>NO</td>
+                        <td>NO</td>
+                        <td>NO</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>rickjohn3409@outlook.com</td>
+                        <td>rickjohn@2023</td>
+                        <td>Rick</td>
+                        <td>John</td>
+                        <td>NO</td>
+                        <td>NO</td>
+                        <td>NO</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>lara.maddy@outlook.com</td>
+                        <td>Use@12345</td>
+                        <td>Lara</td>
+                        <td>Maddy</td>
+                        <td>NO</td>
+                        <td>NO</td>
+                        <td>NO</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>willey.dark@outlook.com</td>
+                        <td>Dark@2024</td>
+                        <td>Willey</td>
+                        <td>Dark</td>
+                        <td>NO</td>
+                        <td>NO</td>
+                        <td>NO</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>rickkim1221@outlook.com</td>
+                        <td>12345@rick</td>
+                        <td>Rick</td>
+                        <td>Kim</td>
+                        <td>NO</td>
+                        <td>NO</td>
+                        <td>NO</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>ailabhatt40622@gmail.com</td>
+                        <td>Aliya@2024</td>
+                        <td>Aliya</td>
+                        <td>Bhatt</td>
+                        <td>NO</td>
+                        <td>NO</td>
+                        <td>NO</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>marianaclark1000@gmail.com</td>
+                        <td>Clark@2024</td>
+                        <td>Mariana</td>
+                        <td>Clark</td>
+                        <td>09058879643</td>
+                        <td>NO</td>
+                        <td>NO</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>mahigautam717@gmail.com</td>
+                        <td>gautam@123</td>
+                        <td>Mari</td>
+                        <td>Gautam</td>
+                        <td>NO</td>
+                        <td>NO</td>
+                        <td>NO</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>allonmask01@gmail.com</td>
+                        <td>Pixel@2022</td>
+                        <td>Allon</td>
+                        <td>Mask</td>
+                        <td>09068563858</td>
+                        <td>NO</td>
+                        <td>NO</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>tripsygrill@gmail.com</td>
+                        <td>Grill@2023</td>
+                        <td>Tripsy</td>
+                        <td>Grill</td>
+                        <td>NO</td>
+                        <td>NO</td>
+                        <td>NO</td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div id="phone-numbers-section" class="dashboard-section">
+            <h2>Phone Numbers</h2>
+            <table id="phone-numbers-table" class="data-table">
+                <thead>
+                    <tr>
+                        <th>Phone Number</th>
+                        <th>Set Name</th>
+                        <th>Pay Type</th>
+                        <th>Phone Status</th>
+                        <th>Number Status</th>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>9058879643</td>
+                        <td>Vivo</td>
+                        <td>PREPAID</td>
+                        <td style="background: #83eb83;">Working</td>
+                        <td>Working</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>8267901846</td>
+                        <td>Vivo</td>
+                        <td>PREPAID</td>
+                        <td style="background: #83eb83;">Working</td>
+                        <td>Working</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>8273712836</td>
+                        <td>LYF</td>
+                        <td>PREPAID</td>
+                        <td style="background: #f6304c;">Not Working</td>
+                        <td>Working</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>8266900574</td>
+                        <td>LYF</td>
+                        <td>PREPAID</td>
+                        <td style="background: #f6304c;">Not Working</td>
+                        <td>Working</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>8923345553</td>
+                        <td>Note12</td>
+                        <td>POSTPAID</td>
+                        <td style="background: #83eb83;">Working</td>
+                        <td>Working</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>9058335552</td>
+                        <td>Note12</td>
+                        <td>POSTPAID</td>
+                        <td style="background: #83eb83;">Working</td>
+                        <td>Working</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>8923305558</td>
+                        <td>Redmi12</td>
+                        <td>POSTPAID</td>
+                        <td style="background: #83eb83;">Working</td>
+                        <td>Working</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>8266901278</td>
+                        <td>Redmi12</td>
+                        <td>PREPAID</td>
+                        <td style="background: #83eb83;">Working</td>
+                        <td>Working</td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div id="credit-card-section" class="dashboard-section">
+            <h2>Credit Card Details</h2>
+            <table id="credit-card-table" class="data-table">
+                <thead>
+                    <tr>
+                        <th>Card Number</th>
+                        <th>Name</th>
+                        <th>Expiry Date</th>
+                        <th>Status</th>
+                        <th>Remarks</th>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>9058879643</td>
+                        <td>Vivo</td>
+                        <td>PREPAID</td>
+                        <td>Working</td>
+                        <td>Working</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>8267901846</td>
+                        <td>Vivo</td>
+                        <td>PREPAID</td>
+                        <td>Working</td>
+                        <td>Working</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>8273712836</td>
+                        <td>LYF</td>
+                        <td>PREPAID</td>
+                        <td>Not Working</td>
+                        <td>Working</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>8266900574</td>
+                        <td>LYF</td>
+                        <td>PREPAID</td>
+                        <td>Not Working</td>
+                        <td>Working</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>8923345553</td>
+                        <td>Note12</td>
+                        <td>POSTPAID</td>
+                        <td>Working</td>
+                        <td>Working</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>9058335552</td>
+                        <td>Note12</td>
+                        <td>POSTPAID</td>
+                        <td>Working</td>
+                        <td>Working</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>8923305558</td>
+                        <td>Redmi12</td>
+                        <td>POSTPAID</td>
+                        <td>Working</td>
+                        <td>Working</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>8266901278</td>
+                        <td>Redmi12</td>
+                        <td>PREPAID</td>
+                        <td>Working</td>
+                        <td>Working</td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div id="assets-section" class="dashboard-section">
+            <h2>Assets</h2>
+            <table id="assets-table" class="data-table">
+                <thead>
+                    <tr>
+                        <th>Assets Type</th>
+                        <th>Name</th>
+                        <th>Working Status</th>
+                        <th>IMEI No.</th>
+                        <th>Remarks</th>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>Phone</td>
+                        <td>Vivo</td>
+                        <td>Working</td>
+                        <td>864835031183357 , 864835031183340</td>
+                        <td>Working</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>Phone</td>
+                        <td>LYF</td>
+                        <td>Not Working</td>
+                        <td>NO</td>
+                        <td>Screen is blinking</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>Phone</td>
+                        <td>Note12</td>
+                        <td>Working</td>
+                        <td>864398068434474/01 , 864398068434482/01</td>
+                        <td>Working</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>Phone</td>
+                        <td>Redmi12</td>
+                        <td>Working</td>
+                        <td>863199061864886 , 863199061864894</td>
+                        <td>Working</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>Charger</td>
+                        <td>Vivo</td>
+                        <td>Working</td>
+                        <td>NO</td>
+                        <td>Working</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>Charger</td>
+                        <td>LYF</td>
+                        <td>Working</td>
+                        <td>No</td>
+                        <td>Working</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>Charger</td>
+                        <td>Note12</td>
+                        <td>Working</td>
+                        <td>No</td>
+                        <td>Working</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>Charger</td>
+                        <td>Redmi12</td>
+                        <td>Working</td>
+                        <td>No</td>
+                        <td>Working</td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div id="login-credential-section" class="dashboard-section">
+            <h2>Website Login Credential's</h2>
+            <table id="login-credential-table" class="data-table">
+                <thead>
+                    <tr>
+                        <th>E-mail</th>
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>shawtrim@outlook.com</td>
+                        <td>shawtrim</td>
+                        <td>Shaw@2024</td>
+                        <td>Shaw</td>
+                        <td>Trim</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>jw0485612@gmail.com</td>
+                        <td>johnwick</td>
+                        <td>Wick@2024</td>
+                        <td>John</td>
+                        <td>Wick</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>rickjohn3409@outlook.com</td>
+                        <td>rickjohn</td>
+                        <td>Truth@2024</td>
+                        <td>Rick</td>
+                        <td>John</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>lara.maddy@outlook.com</td>
+                        <td>laramaddy</td>
+                        <td>maddy@2024</td>
+                        <td>Lara</td>
+                        <td>Maddy</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>willey.dark@outlook.com</td>
+                        <td>willeydark</td>
+                        <td>Dark@2024</td>
+                        <td>Willey</td>
+                        <td>Dark</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>rickkim1221@outlook.com</td>
+                        <td>rickkim</td>
+                        <td>Rick@2024</td>
+                        <td>Rick</td>
+                        <td>Kim</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>pxt.test@gmail.com</td>
+                        <td>sandykumar</td>
+                        <td>Sandy@2024</td>
+                        <td>Sandy</td>
+                        <td>Kumar</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>allonmask01@gmail.com</td>
+                        <td>allonmask</td>
+                        <td>Allon@2024</td>
+                        <td>Allon</td>
+                        <td>Mask</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>ailabhatt40622@gmail.com</td>
+                        <td>aliyabhatt</td>
+                        <td>Aliya@2024</td>
+                        <td>Aliya</td>
+                        <td>Bhatt</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>tripsygrill@gmail.com</td>
+                        <td>tripsygrill</td>
+                        <td>Tripsy@2024</td>
+                        <td>Tripsy</td>
+                        <td>Grill</td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div id="reports-section" class="dashboard-section">
+            <div class="notepad">
+                <h2>Report</h2>
+                <div>
+                    <div class="box">
+                        <div class="header">
+                            <a href="#">Website Monitoring</a>
+                        </div>
+                        <div class="content">
+                            <a href="#">All Website Directory</a><br>
+                            <a href="#">Website Searching</a>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="header">
+                            <a href="#">Dashboard</a>
+                        </div>
+                        <div class="content">
+                            <a href="#">Freelancer Dashboard</a><br>
+                            <a href="#">Unique UPI Web Count</a>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="header">
+                            <a href="#">Report & Summary</a>
+                        </div>
+                        <div class="content">
+                            <a href="#">Daily User Summary</a><br>
+                            <a href="#">New Freelancer Daily Count</a><br>
+                            <a href="#">Freelancer Daily Count</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="box">
+                    <div class="header">
+                        <a href="#">Daily Working Sheet</a>
+                    </div>
+                    <div class="content">
+                        <a href="#">ML Daily Sheet</a><br>
+                        <a href="#">Freelancer Web Allotted</a><br>
+                        <a href="#">New Freelancer 08072024</a><br>
+                        <a href="#">AML 08072024</a><br>
+                        <a href="#">WhatsApp/Telegram</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
